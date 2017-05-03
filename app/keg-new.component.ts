@@ -7,11 +7,11 @@ declare var jQuery: any;
   selector: 'keg-new',
   template: `
     <div class="row">
-      <div class="col s12 m6">
+      <div class="col s12 m10 offset-m1">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">Card Title</span>
-            <form (ngSubmit)="onSubmit($event, newKeg)" #newKeg="ngForm">
+            <span class="card-title">Add a Keg</span>
+            <form (ngSubmit)="onSubmit()" #newKeg="ngForm">
               <div class="row">
                 <div class="input-field col s6">
                   <input #newName id="name" type="text">
@@ -34,7 +34,7 @@ declare var jQuery: any;
                     <option value="124">½ Barrel</option>
                     <option value="105">50 Liter</option>
                     <option value="64">¼ Barrel</option>
-                    <option value="41">1/6 Barrel</option>
+                    <option value="41">⅙ Barrel</option>
                   </select>
                   <label>Keg Size</label>
                 </div>
@@ -64,7 +64,7 @@ declare var jQuery: any;
               </div>
               <div class="row">
                 <div class="col s12">
-                  <button (click)="addKeg(newName.value, newBrewery.value, newStyle.value, newSize.value); newName.value=''; newBrewery.value=''; newStyle.value='';" class="waves-effect waves-light btn col s12" type="submit">Add Keg</button>
+                  <button (click)="addKeg(newName.value, newBrewery.value, newStyle.value, newSize.value); newName.value=''; newBrewery.value='';" class="waves-effect waves-light btn col s12" type="submit">Add Keg</button>
                 </div>
               </div>
             </form>
@@ -77,7 +77,7 @@ declare var jQuery: any;
 
 export class KegNewComponent {
   @Output() newKegSender = new EventEmitter();
-  styles: string[] = ['Lager', 'Pilsner', 'Ale', 'Pale Ale', 'India Pale Ale', 'Stout', 'Porter', 'Wheat Beer', 'Cider', 'Red Ale', 'Imperial IPA', 'Imperial Stout', 'Amber', 'Brown Ale', 'American Adjunct Lager', 'Irish Stout', 'Cascadian Dark Ale', 'Black IPA', 'Session Ale', 'Dunkelweizen', 'Belgian Ale', 'Kölsch', 'Barley wine', 'Bock', 'ESB', 'Schwarzbier', 'Sour Ale', 'Gosé', 'Helles Bock'];
+  styles: string[] = ['Ale','Amber','American Adjunct Lager','Barley wine','Belgian Ale','Black IPA','Bock','Brown Ale','Cascadian Dark Ale','Cider','Dunkelweizen','ESB','Gosé','Helles Bock','Imperial IPA','Imperial Stout','India Pale Ale','Irish Stout','Kölsch','Lager','Pale Ale','Pilsner','Porter','Red Ale','Schwarzbier','Session Ale','Sour Ale','Stout','Wheat Beer'];
   newPrice: number = 5;
   newABV: number = 5;
   newIBU: number = 20;
@@ -86,10 +86,10 @@ export class KegNewComponent {
     jQuery('select').material_select();
   }
 
-  onSubmit(event, form) {
+  onSubmit() {
     event.preventDefault();
-    form.reset();
-    return false;
+    // form.reset();
+    // return false;
   }
 
   addKeg(newName: string, newBrewery: string, newStyle: string, newSize: string) {

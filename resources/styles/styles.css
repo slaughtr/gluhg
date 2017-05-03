@@ -3,6 +3,25 @@ input[type=range] + .thumb.active {
   border-radius: 50% 50% 50% 50%;
 }
 
-.card-panel {
-  width: 95%;
+.card {
+  width: 98%;
+  height: 95%;
+}
+
+.progress {
+  height: 7px;
+
+}
+
+body {
+  background-color: #424242;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+span.badge.new {
+  margin-top: 7px;
+  font-size: 0.95rem;
 }
