@@ -13,6 +13,6 @@ export class TotalLeftPipe implements PipeTransform {
     var percentage: number = ((input.pintsConsumed/input.pintsCapacity))
     var color = percentage * 120;
     return {'width': `${percentage*100}%`,
-            'background-color': `hsl(${color}, 100%, 50%)`}
+            'background-color': `hsl(${color}, 90%, 45%)`}
   }
 }

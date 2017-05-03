@@ -6,15 +6,15 @@ import { Keg } from './keg.model';
   template: `
   <md-grid-list cols="2" rowHeight="165px">
     <md-grid-tile *ngFor="let keg of kegs | async">
-      <div class="card orange">
+      <div class="card grey lighten-1">
         <div class="row">
           <div class="col s9">
             <div class="col s12">
               <h5 class="card-title"><strong>{{keg.name | titlecase}}</strong><small><br>from <strong>{{keg.brewery | titlecase}}</strong></small></h5>
             </div>
             <div class="col s6">
-              <div class="chip">
-                <span class="left-align">{{keg.style}}</span>
+              <div class="chip orange darken-3">
+                <span class="left-align white-text">{{keg.style}}</span>
               </div>
             </div>
             <div class="col s6">
