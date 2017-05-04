@@ -18,7 +18,7 @@ import { Keg } from './keg.model';
   <keg-new *ngIf="showNewKeg" (newKegSender)="addKeg($event)"></keg-new>
   <div class="row">
     <div class="col s12">
-      <keg-list [kegs]="kegs" (pintSoldSender)="pintSold($event)"></keg-list>
+      <keg-list [kegs]="kegs" (pintSoldSender)="pintSold($event)" (removeKegSender)="removeKeg($event)" (editKegSender)="editKeg($event)"></keg-list>
     </div>
   </div>
   `
@@ -38,6 +38,16 @@ export class AppComponent {
 
   addKeg(newKeg: Keg) {
     this.kegs.push(newKeg);
+  }
+
+  removeKeg(key: string) {
+    this.kegs.remove(key);
+  }
+
+  editKeg(kegToEdit: any) {
+    delete kegToEdit.keg.$exists;
+    delete kegToEdit.keg.$key;
+    this.kegs.update(kegToEdit.key, kegToEdit.keg)
   }
 
   pintSold(kegToUpdate: any) {

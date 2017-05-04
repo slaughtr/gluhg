@@ -58,7 +58,7 @@ declare var jQuery: any;
                   <label class="active">IBU {{newIBU}}</label>
                   <br>
                   <p class="range-field">
-                    <input [(ngModel)]="newIBU" type="range" name="ibu" min="1" max="150" step="1">
+                    <input [(ngModel)]="newIBU" type="range" name="ibu" min="0" max="150" step="1">
                   </p>
                 </div>
               </div>

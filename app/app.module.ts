@@ -8,6 +8,7 @@ import { masterFirebaseConfig } from './api-keys';
 
 import { AppComponent } from './app.component';
 import { KegNewComponent } from './keg-new.component';
+import { KegEditComponent } from './keg-edit.component';
 import { KegListComponent } from './keg-list.component';
 import { TotalLeftPipe } from './total-left.pipe'
 
@@ -29,6 +30,7 @@ export const firebaseConfig = {
   declarations: [ AppComponent,
                   KegNewComponent,
                   KegListComponent,
+                  KegEditComponent,
                   TotalLeftPipe
                 ],
   bootstrap: [ AppComponent ]
