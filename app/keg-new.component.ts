@@ -47,14 +47,18 @@ declare var jQuery: any;
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s4">
+                  <input #newImg id="img" type="text">
+                  <label for="img">ImageURL</label>
+                </div>
+                <div class="input-field col s4">
                   <label class="active">ABV {{newABV}} %</label>
                   <br>
                   <p class="range-field">
                     <input [(ngModel)]="newABV" type="range" name="abv" min="1.0" max="20.0" step="0.1">
                   </p>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s4">
                   <label class="active">IBU {{newIBU}}</label>
                   <br>
                   <p class="range-field">
@@ -64,7 +68,7 @@ declare var jQuery: any;
               </div>
               <div class="row">
                 <div class="col s12">
-                  <button (click)="addKeg(newName.value, newBrewery.value, newStyle.value, newSize.value); newName.value=''; newBrewery.value='';" class="waves-effect waves-light btn col s12" type="submit">Add Keg</button>
+                  <button (click)="addKeg(newName.value, newBrewery.value, newStyle.value, newSize.value, newImg.value); newName.value=''; newBrewery.value=''; newImg.value='';" class="waves-effect waves-light btn col s12" type="submit">Add Keg</button>
                 </div>
               </div>
             </form>
@@ -92,8 +96,8 @@ export class KegNewComponent {
     // return false;
   }
 
-  addKeg(newName: string, newBrewery: string, newStyle: string, newSize: string) {
-    var newKeg: Keg = new Keg(newName, newBrewery, this.newPrice, this.newABV, this.newIBU, newStyle, parseInt(newSize), parseInt(newSize));
+  addKeg(newName: string, newBrewery: string, newStyle: string, newSize: string, newImg: string) {
+    var newKeg: Keg = new Keg(newName, newBrewery, this.newPrice, this.newABV, this.newIBU, newStyle, parseInt(newSize), parseInt(newSize), newImg);
     this.newKegSender.emit(newKeg);
   }
 }

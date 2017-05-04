@@ -46,14 +46,18 @@ declare var jQuery: any;
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s4">
+              <input [(ngModel)]="keg.imgURL" id="img" type="text">
+              <label for="img">ImageURL</label>
+            </div>
+            <div class="input-field col s4">
               <label class="active">ABV {{keg.abv}} %</label>
               <br>
               <p class="range-field">
                 <input [(ngModel)]="keg.abv" type="range" name="abv" min="1.0" max="20.0" step="0.1">
               </p>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s4">
               <label class="active">IBU {{keg.ibu}}</label>
               <br>
               <p class="range-field">
