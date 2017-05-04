@@ -22,7 +22,7 @@ declare var jQuery: any;
         <li *ngIf="!showNewKeg" class="right"><a (click)="toggleNewKeg()">Add a Keg</a></li>
         <li *ngIf="showNewKeg" class="right"><a (click)="toggleNewKeg()">Done</a></li>
         <li>
-          <a class='dropdown-button btn' href='#' data-activates='dropdown1'>{{selectedStyle}}</a>
+          <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Filter by: {{selectedStyle}}</a>
 
         </li>
       </ul>
@@ -72,7 +72,6 @@ export class AppComponent {
   ngAfterViewInit() {
     jQuery('.dropdown-button').dropdown({
       constrainWidth: true,
-      hover: true,
       gutter: 15,
       belowOrigin: true,
       alignment: 'left'

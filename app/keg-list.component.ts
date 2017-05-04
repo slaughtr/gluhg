@@ -10,7 +10,11 @@ import { Keg } from './keg.model';
         <div class="row">
           <div class="col s9">
             <div class="col s12">
-              <h5 class="card-title"><strong>{{keg.name | titlecase}}</strong><small><br>from <strong>{{keg.brewery | titlecase}}</strong></small></h5>
+
+              <h5 class="card-title"><strong>{{keg.name | titlecase}}</strong>
+                <span *ngIf="(keg | totalleft:'alert') === 'low'" class="white-text chip red right">Almost Out</span>
+                <span *ngIf="(keg | totalleft:'alert') === 'high'" class="white-text chip green right">Just Tapped</span>
+              <br><small>from <strong>{{keg.brewery | titlecase}}</strong></small></h5>
             </div>
             <div class="col s6">
               <div class="chip orange darken-3">
@@ -30,7 +34,7 @@ import { Keg } from './keg.model';
         <div class="row">
           <div class="col s12">
             <div class="progress">
-              <div class="determinate" [ngStyle]="keg | totalleft"></div>
+              <div class="determinate" [ngStyle]="keg | totalleft:'style'"></div>
             </div>
           </div>
         </div>
