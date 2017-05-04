@@ -24,7 +24,7 @@ import { Keg } from './keg.model';
           </div>
           <div class="col s3">
             <h3 class="right">{{keg.price | currency:'USD':true:'1.2-2'}}</h3>
-            <a class="waves-effect waves-light btn-flat activator"><span id="more-text">More</span> <i class="material-icons">input</i></a>
+            <button class="waves-effect waves-light btn-flat right activator"><span id="more-text" class="activator">More</span> <i class="material-icons">input</i></button>
           </div>
         </div>
         <div class="row">
