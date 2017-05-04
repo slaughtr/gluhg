@@ -5,7 +5,7 @@ import { Keg } from './keg.model';
   selector: 'keg-list',
   template: `
   <md-grid-list cols="2" rowHeight="165px">
-    <md-grid-tile *ngFor="let keg of kegs | async">
+    <md-grid-tile *ngFor="let keg of kegs">
       <div class="card grey lighten-1">
         <div class="row">
           <div class="col s9">
@@ -55,6 +55,7 @@ export class KegListComponent {
   @Output() editKegSender = new EventEmitter();
   showKegEdit: boolean = false;
   selectedKegToEdit: Keg;
+
 
   pintSold(key: string, keg: Keg, volume: number) {
     keg.pintsConsumed -= volume;

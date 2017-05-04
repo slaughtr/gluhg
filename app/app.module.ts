@@ -11,6 +11,7 @@ import { KegNewComponent } from './keg-new.component';
 import { KegEditComponent } from './keg-edit.component';
 import { KegListComponent } from './keg-list.component';
 import { TotalLeftPipe } from './total-left.pipe'
+import { StyleFilterPipe } from './style-filter.pipe'
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -31,7 +32,8 @@ export const firebaseConfig = {
                   KegNewComponent,
                   KegListComponent,
                   KegEditComponent,
-                  TotalLeftPipe
+                  TotalLeftPipe,
+                  StyleFilterPipe
                 ],
   bootstrap: [ AppComponent ]
 })

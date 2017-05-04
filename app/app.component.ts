@@ -1,24 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Keg } from './keg.model';
+
+declare var jQuery: any;
 
 @Component({
   selector: 'app-root',
   template: `
+  <ul id='dropdown1' class='dropdown-content z-depth-5'>
+    <li (click)="selectedStyle = 'all';" value="all"><a>All</a></li>
+    <li (click)="selectedStyle = 'light';" value="light"><a>Light</a></li>
+    <li (click)="selectedStyle = 'hoppy';" value="hoppy"><a>Hoppy</a></li>
+    <li (click)="selectedStyle = 'dark';" value="dark"><a>Dark</a></li>
+    <li (click)="selectedStyle = 'cider';" value="cider"><a>Cider</a></li>
+    <li (click)="selectedStyle = 'other';" value="other"><a>Other</a></li>
+  </ul>
   <nav>
     <div class="nav-wrapper yellow darken-3">
       <a href="#" class="brand-logo center">Gluhg</a>
-      <ul id="nav-mobile" class="hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li *ngIf="!showNewKeg" class="right"><a (click)="toggleNewKeg()">Add a Keg</a></li>
         <li *ngIf="showNewKeg" class="right"><a (click)="toggleNewKeg()">Done</a></li>
-        <li class="left"><a href="#">Beer</a></li>
+        <li>
+          <a class='dropdown-button btn' href='#' data-activates='dropdown1'>{{selectedStyle}}</a>
+
+        </li>
       </ul>
     </div>
   </nav>
+
   <keg-new *ngIf="showNewKeg" (newKegSender)="addKeg($event)"></keg-new>
   <div class="row">
     <div class="col s12">
-      <keg-list [kegs]="kegs" (pintSoldSender)="pintSold($event)" (removeKegSender)="removeKeg($event)" (editKegSender)="editKeg($event)"></keg-list>
+      <keg-list [kegs]="kegs | stylefilter:selectedStyle | async" (pintSoldSender)="pintSold($event)" (removeKegSender)="removeKeg($event)" (editKegSender)="editKeg($event)"></keg-list>
     </div>
   </div>
   `
@@ -30,6 +44,7 @@ export class AppComponent {
     this.kegs = af.database.list('/kegs');
   }
 
+  selectedStyle: string = 'all';
   showNewKeg: boolean = false;
 
   toggleNewKeg() {
@@ -52,5 +67,15 @@ export class AppComponent {
 
   pintSold(kegToUpdate: any) {
     this.kegs.update(kegToUpdate.key, { pintsConsumed: kegToUpdate.pintsConsumed });
+  }
+
+  ngAfterViewInit() {
+    jQuery('.dropdown-button').dropdown({
+      constrainWidth: true,
+      hover: true,
+      gutter: 15,
+      belowOrigin: true,
+      alignment: 'left'
+    })
   }
 }
