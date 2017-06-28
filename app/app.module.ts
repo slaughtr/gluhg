@@ -25,7 +25,7 @@ export const firebaseConfig = {
   imports: [ BrowserModule,
              FormsModule,
              NoopAnimationsModule,
-             MaterialModule.forRoot(),
+             MaterialModule,
              AngularFireModule.initializeApp(firebaseConfig)
            ],
   declarations: [ AppComponent,
